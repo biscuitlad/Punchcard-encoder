@@ -2,6 +2,7 @@
 Punchcard knitting pattern encoder for Brenda Bell's Punchcard Generator
 
 This script identifies hole punches for a Brother punchcard knitting machine from a screenshot of a pattern.
+It does not identify blanks, they get ignored unless there is at least one hole on the row. For example a row of all blanks will be skipped in the output.
 It outputs a grid of dashes and crosses for Brenda Bell's program for a Cricut (or similar) die cutter machine.
 The script assumes 24 stitch punchcards and is tuned for the PDF version of the Brother Pattern Book Vol 205.
 It detects blue circles on a white background and outputs the pattern as a grid of dashes and crosses.
