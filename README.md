@@ -11,18 +11,24 @@ Usage:
 1. Take a screenshot of the pattern (inside the blue border) and save it as 'punchcard-pattern.png'.
 2. Run this script.
 3. Check the output against the original pattern.
-Parameters:
+
+Parameters (you can tweak these to improve image detection for your screenshot):
 - image_path (str): Path to the screenshot image.
 - dp (float): Inverse ratio of the accumulator resolution to the image resolution for HoughCircles.
 - minDist (int): Minimum distance between the centers of detected circles.
 - minRadius (int): Minimum circle radius to be detected.
 - maxRadius (int): Maximum circle radius to be detected.
+- 
+NB. Please also read the comments at the top of the script.
+
 Output:
 - A grid of dashes and crosses representing the pattern, printed to the terminal.
 - The processed image with detected circles and grid lines displayed in a window.
+
 Note:
 - The script is tuned to specific parameters and may require adjustments for different screen resolutions or patterns.
 - Carefully check the output against the original pattern to ensure accuracy.
+
 Dependencies:
 - OpenCV (cv2)
 - NumPy (np)
