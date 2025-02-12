@@ -137,3 +137,57 @@ XX-XXX-XXX-XXX-XXX-XXX-X
 XX-XXX-XXX-XXX-XXX-XXX-X
 Rows: 35, Columns: 24
 ```
+
+And finally one more (punchcard 37):
+
+![punchcard-pattern1](https://github.com/user-attachments/assets/cd7d42ea-5cab-4256-b89c-1c22368692e8)
+
+And its output:
+
+```
+X----XXXX----XXXX----XXX
+XX--XXX-XX--XXX-XX--XXX-
+---XXX-----XXX-----XXX--
+--XXX-----XXX-----XXX---
+-XXX--XX-XXX--XX-XXX--XX
+XXX----XXXX----XXXX----X
+X-X-X-X-----X-----X-X-X-
+-X-X-X-----XXX-----X-X-X
+X-X-X-----XX-XX-----X-X-
+-X-X------X---X------X-X
+X-X-------XX-XX-XX----X-
+-X---------XXX-XXXX----X
+X-----------X-XX--XX----
+-X------XXXXXXXXX-XX---X
+X-X--------XXX----X---X-
+-X-X--------X-----XX-X-X
+X-X---------X--XXXX---X-
+-X----------XXXXX------X
+X-X-------XXXX--------X-
+-X-X-----XXXX--------X-X
+--XX---X-X--X--------XX-
+--XX----XX--X--------XX-
+-X-X----XX--X--------X-X
+X-X------XX-X---------X-
+-X--------XXXX---------X
+X-X--XXX---XXXXX-XXX--X-
+-X-X-XXX---XXX-X-XXX-X-X
+X-X---XXX--XXX--XXX---X-
+-X------XX-XXX-XX------X
+X--------XXXXXXXX-------
+-X--------XXXXX-XX-----X
+X-X--------XXX--XX----X-
+-X-X--------X--XX----X-X
+X-X-X---------XX----X-X-
+-X-X-X--------XX---X-X-X
+X-X-X-X--------XX-X-X-X-
+XXX----XXXX----XXXX----X
+-XXX--XX-XXX---X-XXX--XX
+--XXX-----XXX-----XXX---
+---XX------XXX-----XXX--
+-X--XXX-XX--XXX-XX--XXX-
+X----XXXX----XXXX----XXX
+Rows: 42, Columns: 24
+```
+
+
