@@ -1,5 +1,5 @@
 # Punchcard-encoder
-Punchcard knitting pattern encoder for Brenda Bell's Punchcard Generator
+Punchcard knitting pattern encoder for Brenda Bell's Punchcard Generator: https://brendaabell.com/knittingtools/pcgenerator/
 
 This script identifies hole punches for a Brother punchcard knitting machine from a screenshot of a pattern.
 It does not identify blanks, they get ignored unless there is at least one hole on the row. For example a row of all blanks will be skipped in the output.
