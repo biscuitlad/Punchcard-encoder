@@ -28,7 +28,7 @@ Output:
 Note:
 - The script is tuned to specific parameters and may require adjustments for different screen resolutions or patterns.
 - Carefully check the output against the original pattern to ensure accuracy.
-- ${\color{red}This script makes mistakes!} Do not rely on it working perfectly. $$
+- This script makes mistakes! Do not rely on it working perfectly.
 
 Dependencies:
 - OpenCV (cv2)
