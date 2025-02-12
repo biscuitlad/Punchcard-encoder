@@ -11,6 +11,7 @@ Usage:
 1. Take a screenshot of the pattern (inside the blue border) and save it as 'punchcard-pattern.png'.
 2. Run this script.
 3. Check the output against the original pattern.
+4. If the output looks correct, you can use the text file that was save with the same name as file in image_path.
 
 Parameters (you can tweak these to improve image detection for your screenshot):
 - image_path (str): Path to the screenshot image.
