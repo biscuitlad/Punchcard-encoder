@@ -1,4 +1,4 @@
-# This is a very simple script to try and identify hole punches for a brother
+# This is a very simple script to try and identify hole punches for a brothe
 # punchcard knitting machine. It outputs dashes and crosses for Brenda Bell's
 # program for a cricut (or similar) die cutter machine. It assumes 24 stitch
 # punchcards, and it's tuned for the pdf version of the brother pattern book, 
@@ -34,6 +34,7 @@
 
 import cv2
 import numpy as np
+import os
 
 # Load the image
 image_path = r"C:\Users\Admin\OneDrive\Desktop\punchcard-pattern.png"
@@ -133,12 +134,24 @@ else:
         cv2.line(frame_gau_blur, (0, y), (img_width, y), (0, 255, 0), 1)
 
 
-  # Output the grid as simple text
+    # Output the grid as simple text to console
     for row in grid:
         print(''.join(row))
     print(f"Rows: {rc}, Columns: {cc}")
 
-    
+     # Output the grid as simple text to a text file
+    output_lines = []
+    for row in grid:
+        output_lines.append(''.join(row))
+        # output_lines.append(f"Rows: {rc}, Columns: {cc}")
+
+    # Save the output to a text file
+    base_name = os.path.splitext(os.path.basename(image_path))[0]
+    output_file_path = os.path.join(os.path.dirname(image_path), f"{base_name}.txt")
+    with open(output_file_path, 'w') as f:
+        f.write('\n'.join(output_lines))
+
+    print(f"Output saved to {output_file_path}")  
     
     # Display the images
     cv2.imshow('Circles', frame_gau_blur)
