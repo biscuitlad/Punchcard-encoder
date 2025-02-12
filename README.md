@@ -148,12 +148,11 @@ XX-XXX-XXX-XXX-XXX-XXX-X
 Rows: 35, Columns: 24
 ```
 
-And finally one more (punchcard 37):
+And one more (punchcard 37):
 
 ![punchcard-pattern1](https://github.com/user-attachments/assets/cd7d42ea-5cab-4256-b89c-1c22368692e8)
 
 And its output (please note that the blank rows in the pattern are ignored by the script):
-
 ```
 X----XXXX----XXXX----XXX
 XX--XXX-XX--XXX-XX--XXX-
@@ -198,6 +197,60 @@ XXX----XXXX----XXXX----X
 -X--XXX-XX--XXX-XX--XXX-
 X----XXXX----XXXX----XXX
 Rows: 42, Columns: 24
+```
+
+And finally one more (punchcard 74):
+
+![pattern-74](https://github.com/user-attachments/assets/55c76a1c-8b09-4c3d-b6cf-8fa8b0ecc662)
+```
+-X---------X-X---------X
+X-X-------X---X-------X-
+-X-------X-----X-------X
+X-X-----X-------X-----X-
+-X-----X---------X-----X
+X-X-----X-------X-----X-
+-X-------X-----X-------X
+X-X-------X---X-------X-
+-X---------X-X---------X
+X-X---------X---------X-
+-X---------X-X---------X
+X-X-------X-X-X-------X-
+-X-------X-XXX-X-------X
+X-X-----X-------X-----X-
+-X-----X-XXXXXXX-X-----X
+X-X---X--X-----X--X---X-
+-X---X---X-----X---X---X
+X-X---X--X-----X--X---X-
+-X-----X-XXXXXXX-X-----X
+X-X-----X-------X-----X-
+-X-------X-XXX-X-------X
+X-X-------X-X-X-------X-
+-X---------X-X---------X
+X-X---------X---------X-
+-X---------X-X---------X
+X-X-------X---X-------X-
+-X-------X-----X-------X
+X-X-----X-------X-----X-
+-X-----X---------X-----X
+X-X-----X-------X-----X-
+-X-------X-----X-------X
+X-X-------X---X-------X-
+-X---------X-X---------X
+X-X---------X---------X-
+-X---------X-X---------X
+X-X-------X-X-X-------X-
+-X-------X-XXX-X-------X
+X-X-----X-------X-----X-
+-X-----X-XXXXXXX-X-----X
+X-X---X--X-----X--X---X-
+-X---X---X-XXX-X---X---X
+X-X---X--X-----X--X---X-
+-X-----X-XXXXXXX-X-----X
+X-X-----X-------X-----X-
+-X-------X-XXX-X-------X
+X-X-------X-X-X-------X-
+-X---------X-X---------X
+X-X---------X---------X-
 ```
 
 
