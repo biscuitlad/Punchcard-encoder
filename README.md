@@ -107,7 +107,7 @@ And another one (punchcard 24):
 
 ![punchcard-pattern](https://github.com/user-attachments/assets/1fc59f27-9d05-481f-9dd1-d78a6ee7cc2f)
 
-And the output:
+And the output (please note that the blank rows in the pattern are ignored by the script):
 ```
 XXX------X----X-----XXX
 -XX--X----XXX---X-X---XX
@@ -151,7 +151,7 @@ And finally one more (punchcard 37):
 
 ![punchcard-pattern1](https://github.com/user-attachments/assets/cd7d42ea-5cab-4256-b89c-1c22368692e8)
 
-And its output (please note that the blank rows at the top of the pattern are ignored by the script):
+And its output (please note that the blank rows in the pattern are ignored by the script):
 
 ```
 X----XXXX----XXXX----XXX
