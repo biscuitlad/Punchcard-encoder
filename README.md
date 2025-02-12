@@ -142,7 +142,7 @@ And finally one more (punchcard 37):
 
 ![punchcard-pattern1](https://github.com/user-attachments/assets/cd7d42ea-5cab-4256-b89c-1c22368692e8)
 
-And its output:
+And its output (please note that the blank rows at the top of the pattern are ignored by the script):
 
 ```
 X----XXXX----XXXX----XXX
