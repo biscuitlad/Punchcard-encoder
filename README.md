@@ -25,12 +25,13 @@ Parameters (you can tweak these to improve image detection for your screenshot):
 - minDist (int): Minimum distance between the centers of detected circles.
 - minRadius (int): Minimum circle radius to be detected.
 - maxRadius (int): Maximum circle radius to be detected.
-- 
+  
 NB. Please also read the comments at the top of the script.
 
 Output:
 - A grid of dashes and crosses representing the pattern, printed to the terminal.
 - The processed image with detected circles and grid lines displayed in a window.
+- Pressing any key unloads the image window. The script cannot be rerun with closing this window.
 
 Note:
 - The script is tuned to specific parameters and may require adjustments for different screen resolutions or patterns.
