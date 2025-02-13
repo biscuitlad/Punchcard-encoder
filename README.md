@@ -14,9 +14,9 @@ You must carefully check the text output against the pattern!
 When uploading the text file to Brenda Bell's program, make sure you have the 24 stitch, 4.5mm gauge Brother machine selected or it will throw an error.
 
 Usage:
-1. Take a screenshot of the pattern (inside the blue border) and save it as 'punchcard-pattern.png'.
+1. Take a screenshot of the pattern (inside the blue border) and save it as 'punchcard-pattern.png' and edit the path to this image at the top of the script.
 2. Run this script.
-3. Check the output against the original pattern.
+3. Check the output in the terminal against the original pattern.
 4. If the output looks correct, you can use the text file that was saved with the same name as file in image_path.
 
 Parameters (you can tweak these to improve image detection for your screenshot):
