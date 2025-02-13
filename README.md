@@ -31,7 +31,7 @@ NB. Please also read the comments at the top of the script.
 Output:
 - A grid of dashes and crosses representing the pattern, printed to the terminal.
 - The processed image with detected circles and grid lines displayed in a window.
-- Pressing any key unloads the image window. The script cannot be rerun with closing this window.
+- Pressing any key unloads the image window. The script cannot be rerun without closing this window.
 
 Note:
 - The script is tuned to specific parameters and may require adjustments for different screen resolutions or patterns.
