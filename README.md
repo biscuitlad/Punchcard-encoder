@@ -1,5 +1,8 @@
+
+  ![Screenshot 2025-02-13 110201](https://github.com/user-attachments/assets/8c4744af-4d12-4b8c-ab94-23e0bf594ec7)
+
 # Punchcard-encoder
-Punchcard knitting pattern encoder for Brenda Bell's Punchcard Generator: https://brendaabell.com/knittingtools/pcgenerator/
+Punchcard knitting pattern encoder for Brenda Bell's Punchcard Generator: https://brendaabell.com/knittingtools/pcgenerator/ (a program to create an SVG file that can be cut out by die cutting machine like a Cricut).
 
 This script identifies hole punches for a Brother punchcard knitting machine from a screenshot of the blue and white punchcard patterns that were commonly created in the 1980s in Brother knitting pattern catalogues.
 
