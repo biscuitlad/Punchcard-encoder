@@ -1,15 +1,15 @@
 # Punchcard-encoder
 Punchcard knitting pattern encoder for Brenda Bell's Punchcard Generator: https://brendaabell.com/knittingtools/pcgenerator/
 
-This script identifies hole punches for a Brother punchcard knitting machine from a screenshot of a pattern.
-It does not identify blanks, they get ignored unless there is at least one hole on the row. For example a row of all blanks will be skipped in the output.
-It outputs a grid of dashes and crosses for Brenda Bell's program for a Cricut (or similar) die cutter machine.
+This script identifies hole punches for a Brother punchcard knitting machine from a screenshot of the blue and white punchcard patterns that were commonly created in the 1980s in Brother knitting pattern catalogues.
 
-The script assumes 24 stitch punchcards and is tuned for the PDF version of the Brother Pattern Book Vol 205 which you should be able to download for free somewhere (it is quite large). Most of these patterns are blue and white. The script is tuned to detect the solid blue circles that represent holes in the punchcard pattern. However, different quality screenshots will affect this. I use my default width for the pdf, which on my 3K screen is to enalrge by 279% to take the screenshot. For my set up, this detects every blue circle to about 99-100% accuracy. However, your screen resolution may be different and YMMV!
+The script assumes 24 stitch punchcards and is tuned for the PDF version of the Brother Pattern Book Vol 5 which you should be able to download for free somewhere (https://archive.org/details/brother-punchcard-pattern-book-volume-5), though it is quite large. Most of these patterns are blue and white. The script is tuned to detect the solid blue circles that represent holes in the punchcard pattern. However, different quality screenshots will affect this. I use my default width for the pdf, which on my 3K screen is to enalrge by 279% to take the screenshot. For my set up, this detects every blue circle to about 99-100% accuracy. However, your screen resolution may be different and YMMV! You can check the image it produces that shows the circle detection (red circles) or just compare the text output in the terminal window.
 
 The screenshot should only include the pattern, not the whole card and not the rows of holes down either side. You should try and get as tight a border as possible.
 
-The script detects the blue circles and tries to create a grid based on an average across a row and down a column. Columns default to 24 stitches and are always included. Rows only get detected if they have a circle in them, therefore *blank rows get skipped by the script*. You must carefully check the output!
+The script detects the blue circles and tries to create a grid based on an average across a row and down a column. Columns default to 24 stitches and are always included. But rows only get detected if they have a circle in them, therefore *blank rows get skipped by the script*. 
+
+You must carefully check the text output against the pattern!
 
 When uploading the text file to Brenda Bell's program, make sure you have the 24 stitch, 4.5mm gauge Brother machine selected or it will throw an error.
 
