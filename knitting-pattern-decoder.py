@@ -196,7 +196,7 @@ if hsv_values:
         circles = np.uint16(np.around(circles))  # Convert to integers
         for i in circles[0, :]:
             # Draw the detected circle and its center
-            cv2.circle(frame_gau_blur, (i[0], i[1]), 7, (0, 0, 255), 1)
+            cv2.circle(frame_gau_blur, (i[0], i[1]), 7, (0, 0, 255), 2)
             cir_cen.append((i[0], i[1]))
             
     
