@@ -4,25 +4,27 @@
 # Punchcard-encoder
 Punchcard knitting pattern encoder for Brenda Bell's Punchcard Generator: https://brendaabell.com/knittingtools/pcgenerator/ (a program to create an SVG file that can be cut out by die cutting machine like a Cricut).
 
-This script identifies hole punches for a Brother punchcard knitting machine from a screenshot of the blue and white punchcard patterns that were commonly created in the 1980s in Brother knitting pattern catalogues.
+This script identifies hole punches for a Brother punchcard knitting machine from a screenshot of the punchcard patterns that were commonly created in the 1980s in Brother knitting pattern catalogues.
 
-The script assumes 24 stitch punchcards and is tuned for the PDF version of the Brother Pattern Book Vol 5 which you should be able to download for free somewhere (https://archive.org/details/brother-punchcard-pattern-book-volume-5), though it is quite large. 
+The script assumes 24 stitch punchcards and is tuned for the PDF version of the Brother Pattern Book Vol 5 which you should be able to download for free somewhere (https://archive.org/details/brother-punchcard-pattern-book-volume-5), but it also works for phone camera images of 24 stitch punchcard patterns.
 
-Most of these patterns in this catalogue are blue and white. There are some at the back of the book that are black and white and these do not currently work, though it would not be a big job to add this if there was a need. The script is tuned to detect the solid blue circles that represent holes in the punchcard pattern. However, different quality screenshots will affect this capability. I use my default width for the pdf, which on my 3K screen is to enalrge by 279% to take the screenshot. For my set up, this detects every blue circle to about 99-100% accuracy. However, your screen resolution may be different and YMMV! You can check the image it produces that shows the circle detection (red circles) or just compare the text output in the terminal window.
+Most of these patterns in this catalogue are blue and white. There are some at the back of the book that are black and white and these work less well. The script lets the user click on several 'holes' in the punchcard to get an average HSV value, the more you click the more accurate your results may be, but sometimes just clicking on one or two in the centre is sufficient. The scripts attempts to resize images to around 520 pixels wide if they are smaller than 500 or larger than 600 wide. After click escape you can check the circle detection (red circles) or just compare the text output in the terminal window.
 
 The screenshot should only include the pattern, not the whole card and not the rows of holes down either side. You should try and get as tight a border as possible.
 
 The script detects the blue circles and tries to create a grid based on an average across a row and down a column. Columns default to 24 stitches and are always included. But rows only get detected if they have a circle in them, therefore *blank rows get skipped by the script*. 
 
-**You must carefully check the text output against the pattern!**
+**You must carefully check the text output against the pattern, and insert the blank rows as needed!**
 
 When uploading the text file to Brenda Bell's program, make sure you have the 24 stitch, 4.5mm gauge Brother machine selected or it will throw an error.
 
-**Usage:**
-1. Take a screenshot of the pattern (inside the blue border) and save it as 'punchcard-pattern.png' and edit the path to this image at the top of the script.
-2. Run this script.
-3. Check the output in the terminal against the original pattern.
-4. If the output looks correct, you can use the text file that was saved with the same name as file in image_path.
+**Usage:**  
+        1. Screenshot the pattern and save it. Edit the script to have the path to your image.  
+        2. Run this script.  
+        3. Click on several of the circles in the punchcard image to get their values.  
+        4. Press 'Esc' to exit the image window.  
+        5. The output will be displayed in the terminal and saved to a text file.  
+        6. Check the circle detection, and either click more circles or adjust the parameters to get better accuracy. Any key will unload that window.  
 
 Parameters (you can tweak these to improve image detection for your screenshot):
 - image_path (str): Path to the screenshot image.
