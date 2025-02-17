@@ -26,8 +26,7 @@ When uploading the text file to Brenda Bell's program, make sure you have the 24
         5. The text output will be displayed in the terminal and saved to a text file.  
         6. Check the circle detection, and either click more circles or adjust the parameters to get better accuracy. Any key will unload that window.  
 
-Parameters (you can tweak these to improve image detection for your screenshot):
-- image_path (str): Path to the screenshot image.
+Parameters (you can tweak these to improve image detection for your screenshot):  
 - dp (float): Inverse ratio of the accumulator resolution to the image resolution for HoughCircles.
 - minDist (int): Minimum distance between the centers of detected circles.
 - minRadius (int): Minimum circle radius to be detected.
