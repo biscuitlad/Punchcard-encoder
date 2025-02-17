@@ -87,9 +87,9 @@ if not image_path:
 
 # you can try changing these and see if the circles are detected better
 dp=3.5 
-minDist=15
+minDist=16
 minRadius=0
-maxRadius=6
+maxRadius=4
 
 
 frame = cv2.imread(image_path)
