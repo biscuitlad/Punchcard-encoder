@@ -19,12 +19,12 @@ The script detects the blue circles and tries to create a grid based on an avera
 When uploading the text file to Brenda Bell's program, make sure you have the 24 stitch, 4.5mm gauge Brother machine selected or it will throw an error.
 
 **Usage:**  
-        1. Screenshot the pattern and save it. 
+        1. Screenshot the pattern and save it.  
         2. Run this script and after this message box closes, select your saved file.  
-        2. Click on several of the circles in the punchcard image to get their values.  
-        3. Press 'Esc' to stop selecting and exit the image window.  
-        4. The text output will be displayed in the terminal and saved to a text file.  
-        5. Check the circle detection, and either click more circles or adjust the parameters to get better accuracy. Any key will unload that window.  
+        3. Click on several of the circles in the punchcard image to get their values.  
+        4. Press 'Esc' to stop selecting and exit the image window.  
+        5. The text output will be displayed in the terminal and saved to a text file.  
+        6. Check the circle detection, and either click more circles or adjust the parameters to get better accuracy. Any key will unload that window.  
 
 Parameters (you can tweak these to improve image detection for your screenshot):
 - image_path (str): Path to the screenshot image.
