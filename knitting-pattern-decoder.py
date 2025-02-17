@@ -42,10 +42,16 @@ import cv2
 import numpy as np
 import os
 import tkinter as tk
-from tkinter import messagebox, filedialog
+from tkinter import messagebox, filedialog, ttk
 
-# Function to show instructions
+# Function to show instructions with a checkbox
 def show_instructions():
+    def on_ok():
+        if var.get() == 1:
+            with open("hide_instructions.txt", "w") as f:
+                f.write("hide")
+        root.destroy()
+
     instructions = (
         "Usage:\n"
         "1. Screenshot the pattern and save it.\n"
@@ -56,9 +62,19 @@ def show_instructions():
         "6. Check the circle detection, and either click more circles or adjust the parameters to get better accuracy. Any key will unload that window.\n"
     )
     root = tk.Tk()
-    root.withdraw()  # Hide the root window
-    messagebox.showinfo("Instructions", instructions)
-    root.destroy()
+    root.title("Instructions for knitting punchcard decoder!")
+
+    label = tk.Label(root, text=instructions, justify="left", padx=10, pady=10)
+    label.pack()
+
+    var = tk.IntVar()
+    checkbox = ttk.Checkbutton(root, text="Don't show this message again", variable=var)
+    checkbox.pack(pady=5)
+
+    button = ttk.Button(root, text="OK", command=on_ok)
+    button.pack(pady=5)
+
+    root.mainloop()
 
 # Function to select an image file
 def select_image_file():
@@ -71,8 +87,10 @@ def select_image_file():
     #root.destroy()
     return file_path
 
-# Show instructions to the user
-show_instructions()
+# Check if the instructions should be shown
+if not os.path.exists("hide_instructions.txt"):
+    show_instructions()
+
 
 # Open file selection dialog and get the image path
 image_path = select_image_file()
@@ -80,10 +98,6 @@ image_path = select_image_file()
 if not image_path:
     print("No file selected. Exiting...")
     exit()
-
-############################### Load the image #####################
-#image_path = r"C:\Users\Admin\Pictures\Screenshots\pattern-554.png"
-####################################################################
 
 # you can try changing these and see if the circles are detected better
 dp=3.5 
