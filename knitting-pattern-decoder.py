@@ -159,7 +159,7 @@ if hsv_values:
     # Define a tolerance for the HSV range
     hue_tolerance = 10
     sat_tolerance = 30
-    val_tolerance = 10
+    val_tolerance = 30
 
     # Calculate the lower and upper bounds for the HSV range
     lower_hue = max(0, avg_hsv[0] - hue_tolerance)
