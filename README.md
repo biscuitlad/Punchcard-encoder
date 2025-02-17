@@ -40,7 +40,6 @@ Output:
 - Pressing any key unloads the image window. The script cannot be rerun without closing this window.
 
 Note:
-- The script is tuned to specific parameters and may require adjustments for different screen resolutions or patterns.
 - Carefully check the output against the original pattern to ensure accuracy.
 - This script makes mistakes! Do not rely on it working perfectly.
 
