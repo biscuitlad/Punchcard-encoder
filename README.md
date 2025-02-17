@@ -14,7 +14,7 @@ The screenshot should only include the pattern, not the whole card and not the r
 
 The script detects the blue circles and tries to create a grid based on an average across a row and down a column. Columns default to 24 stitches and are always included. But rows only get detected if they have a circle in them, therefore *blank rows get skipped by the script*. 
 
-**You must carefully check the text output against the pattern, and insert the blank rows as needed!**
+**You must carefully check the text output against the pattern, and insert the blank rows as needed and any missing holes!**
 
 When uploading the text file to Brenda Bell's program, make sure you have the 24 stitch, 4.5mm gauge Brother machine selected or it will throw an error.
 
