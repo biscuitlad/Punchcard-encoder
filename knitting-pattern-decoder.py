@@ -42,13 +42,13 @@ import cv2
 import numpy as np
 import os
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, filedialog
 
 # Function to show instructions
 def show_instructions():
     instructions = (
         "Usage:\n"
-        "1. Screenshot the pattern and save it. Edit the script to have the path to your image\n"
+        "1. Screenshot the pattern and save it.\n"
         "2. Run this script.\n"
         "3. Click on several of the circles in the punchcard image to get their values.\n"
         "4. Press 'Esc' to exit the image window.\n"
@@ -58,20 +58,38 @@ def show_instructions():
     root = tk.Tk()
     root.withdraw()  # Hide the root window
     messagebox.showinfo("Instructions", instructions)
+    root.destroy()
+
+# Function to select an image file
+def select_image_file():
+    root = tk.Tk()
+    root.withdraw()  # Hide the root window
+    file_path = filedialog.askopenfilename(
+        title="Select an image file",
+        filetypes=[("Image files", "*.png;*.jpg;*.jpeg;*.bmp;*.tiff")]
+    )
     #root.destroy()
+    return file_path
 
 # Show instructions to the user
 show_instructions()
 
+# Open file selection dialog and get the image path
+image_path = select_image_file()
+
+if not image_path:
+    print("No file selected. Exiting...")
+    exit()
+
 ############################### Load the image #####################
-image_path = r"C:\Users\Admin\Pictures\Screenshots\pattern-554.png"
+#image_path = r"C:\Users\Admin\Pictures\Screenshots\pattern-554.png"
 ####################################################################
 
 # you can try changing these and see if the circles are detected better
 dp=3.5 
-minDist=16
+minDist=15
 minRadius=0
-maxRadius=6
+maxRadius=4
 
 
 frame = cv2.imread(image_path)
@@ -126,12 +144,12 @@ if hsv_values:
 
     # Define a tolerance for the HSV range
     hue_tolerance = 10
-    sat_tolerance = 10
-    val_tolerance = 20
+    sat_tolerance = 30
+    val_tolerance = 10
 
     # Calculate the lower and upper bounds for the HSV range
     lower_hue = max(0, avg_hsv[0] - hue_tolerance)
-    upper_hue = min(179, avg_hsv[0] + hue_tolerance)
+    upper_hue = min(255, avg_hsv[0] + hue_tolerance)
     lower_sat = max(0, avg_hsv[1] - sat_tolerance)
     upper_sat = min(255, avg_hsv[1] + sat_tolerance)
     lower_val = max(0, avg_hsv[2] - val_tolerance)
@@ -164,8 +182,7 @@ if hsv_values:
         circles = np.uint16(np.around(circles))  # Convert to integers
         for i in circles[0, :]:
             # Draw the detected circle and its center
-            #cv2.circle(frame, (i[0], i[1]), i[2], (0, 255, 0), 2)
-            cv2.circle(frame_gau_blur, (i[0], i[1]), 4, (0, 0, 255), 1)
+            cv2.circle(frame_gau_blur, (i[0], i[1]), 7, (0, 0, 255), 1)
             cir_cen.append((i[0], i[1]))
             
     
