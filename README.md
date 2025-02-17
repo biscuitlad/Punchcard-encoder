@@ -46,6 +46,8 @@ Note:
 Dependencies:
 - OpenCV (cv2)
 - NumPy (np)
+- os
+- tkinter
 
 Some example screenshots of patterns and the outputs:
 
