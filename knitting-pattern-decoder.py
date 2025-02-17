@@ -89,7 +89,7 @@ if not image_path:
 dp=3.5 
 minDist=15
 minRadius=0
-maxRadius=4
+maxRadius=6
 
 
 frame = cv2.imread(image_path)
