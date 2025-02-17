@@ -8,7 +8,7 @@ This script identifies hole punches for a Brother punchcard knitting machine fro
 
 The script assumes 24 stitch punchcards and is tuned for the PDF version of the Brother Pattern Book Vol 5 which you should be able to download for free somewhere (https://archive.org/details/brother-punchcard-pattern-book-volume-5), but it also works for phone camera images of 24 stitch punchcard patterns.
 
-Most of these patterns in this catalogue are blue and white. There are some at the back of the book that are black and white and these work less well. The script lets the user click on several 'holes' in the punchcard to get an average HSV value, the more you click the more accurate your results may be, but sometimes just clicking on one or two in the centre is sufficient. The scripts attempts to resize images to around 520 pixels wide if they are smaller than 500 or larger than 600 wide. After click escape you can check the circle detection (red circles) or just compare the text output in the terminal window.
+Most of these patterns in this catalogue are blue and white. There are some at the back of the book that are black and white and these work less well. The script lets the user click on several 'holes' in the punchcard to get an average HSV value, the more you click the more accurate your results may be, but sometimes just clicking on one or two in the centre is sufficient. The scripts attempts to resize images to around 520 pixels wide if they are smaller than 500 or larger than 600 wide. After clicking 'Escape' you can check the circle detection (red circles) or just compare the text output in the terminal window.
 
 The screenshot should only include the pattern, not the whole card and not the rows of holes down either side. You should try and get as tight a border as possible.
 
@@ -19,12 +19,11 @@ The script detects the blue circles and tries to create a grid based on an avera
 When uploading the text file to Brenda Bell's program, make sure you have the 24 stitch, 4.5mm gauge Brother machine selected or it will throw an error.
 
 **Usage:**  
-        1. Screenshot the pattern and save it. Edit the script to have the path to your image.  
-        2. Run this script.  
-        3. Click on several of the circles in the punchcard image to get their values.  
-        4. Press 'Esc' to exit the image window.  
-        5. The output will be displayed in the terminal and saved to a text file.  
-        6. Check the circle detection, and either click more circles or adjust the parameters to get better accuracy. Any key will unload that window.  
+        1. Screenshot the pattern and save it. After the message box closes, select your saved file. 
+        2. Click on several of the circles in the punchcard image to get their values.  
+        3. Press 'Esc' to stop selecting and exit the image window.  
+        4. The text output will be displayed in the terminal and saved to a text file.  
+        5. Check the circle detection, and either click more circles or adjust the parameters to get better accuracy. Any key will unload that window.  
 
 Parameters (you can tweak these to improve image detection for your screenshot):
 - image_path (str): Path to the screenshot image.
