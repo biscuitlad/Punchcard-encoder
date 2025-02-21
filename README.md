@@ -60,7 +60,6 @@ Some example screenshots of patterns and the outputs:
 
 ![Screenshot 2025-02-17 135752](https://github.com/user-attachments/assets/67f59388-6b12-4583-aff8-2e3902fd6ace)
 
-Notice this one has the blank rows skipped at top and bottom. You need to add these!
+The following screenshots show patterns with blank rows that generate errors in the output. These need correcting by hand in the text file.
 
-![Screenshot 2025-02-17 140310](https://github.com/user-attachments/assets/e632d07a-ef2c-42f9-8951-05b2bf708a77)
-
+![Screenshot 2025-02-21 111203](https://github.com/user-attachments/assets/2486d259-9f96-49d5-abaa-e73e4502d009)  
