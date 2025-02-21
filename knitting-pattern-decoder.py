@@ -1,49 +1,19 @@
-# This is a simple script to try and identify hole punches for a Brother
-# punchcard knitting machine. It outputs dashes and crosses for Brenda Bell's
-# program for a Cricut (or similar) die cutter machine. It assumes 24 stitch
-# punchcards, and it was originally tuned for the PDF version of the Brother pattern 
-# book, where the patterns are in blue (blue circles on white background). The idea
-# is to take a screenshot of the pattern, save it as punchcard-pattern.png, and
-# run this script. It will output the pattern as a grid of dashes and crosses.
-# You can then copy and paste this into Brenda Bell's program to generate a
-# SVG file for your Cricut machine to cut out.
-
-# You need to screenshot only the pattern inside the blue border, and save it.
-# Do not screenshot the whole card, as that has holes down each side that 
-# nothing to do with the pattern.
-    
-# The script is not perfect. The circle detection is dependent on the your mouse 
-# clicks, the resolution of the screenshot and several other factors such 
-# as distance between circles / holes. It is a starting point for you to twiddle
-# with until it works. Carefully check the output against the original pattern!
-
-# Usage:
-# 1. Screenshot the pattern and save it as punchcard-pattern.png.
-# 2. Run this script.
-# 3. Click on several of the circles in the punchcard image to get their HSV values.
-# 4. Press 'Esc' to exit the image window.
-# 5. The output will be displayed in the terminal and saved to a text file.
-# 6. Check the circle detection, and either click more circles or adjust the parameters to get better accuracy.
-# 7. Any key press will close the image window. Output goes into the terminal window. You
-#    can redirect this to a file if you wish or save it as a text file. Brenda Bell's
-#    program to import it is here: https://brendaabell.com/knittingtools/pcgenerator/
-
-# Changes made:
-# - Added a pop-up window with instructions using tkinter.
-# - Resized the image if its width is not between 520 and 550 pixels.
-# - Added functionality to click on the image to get HSV values of the circles.
-# - Calculated the average HSV values and defined a tolerance range for the mask.
-# - Handled both blue and black circles by dynamically determining the HSV range.
-# - Saved the output grid to a text file named after the image file.
-# - Displayed the processed image with detected circles and grid lines.
-
-
+# FILE: /knitting-pattern-decoder/knitting-pattern-decoder/src/knitting-pattern-decoder.py
 import cv2
 import numpy as np
 import os
 import math
 import tkinter as tk
 from tkinter import messagebox, filedialog, ttk
+
+
+
+def main():
+    # main loop
+    print("Knitting Pattern Decoder is running")
+
+
+
 
 # Function to show instructions with a checkbox
 def show_instructions():
@@ -98,13 +68,11 @@ def select_image_file():
         title="Select an image file",
         filetypes=[("Image files", "*.png;*.jpg;*.jpeg;*.bmp;*.tiff")]
     )
-    #root.destroy()
     return file_path
 
 # Check if the instructions should be shown
 if not os.path.exists("hide_instructions.txt"):
     show_instructions()
-
 
 # Open file selection dialog and get the image path
 image_path = select_image_file()
@@ -119,17 +87,16 @@ minDist=16
 minRadius=0
 maxRadius=4
 
-
 frame = cv2.imread(image_path)
 
 if frame is None:
     print("Error: Could not read image. Was it an image file?")
 else:
-     # Get the resolution of the image
+    # Get the resolution of the image
     img_height, img_width = frame.shape[:2]
     print(f"Image resolution: {img_width}x{img_height}")
 
-      # Check if the image width is between 520 and 550 pixels
+    # Check if the image width is between 520 and 550 pixels
     if img_width < 500 or img_width > 600:
         # Resize the image to approximately 535 pixels wide while maintaining the aspect ratio
         new_width = 520
@@ -165,7 +132,7 @@ while True:
 
 cv2.destroyAllWindows()
 
-    # Calculate the average HSV values
+# Calculate the average HSV values
 if hsv_values:
     avg_hsv = np.mean(hsv_values, axis=0)
     print(f"Average HSV value: {avg_hsv}")
@@ -213,7 +180,6 @@ if hsv_values:
             cv2.circle(frame_gau_blur, (i[0], i[1]), 7, (0, 0, 255), 2)
             cir_cen.append((i[0], i[1]))
     
-    
     # Calculate the total number of circles detected
     total_circles = len(cir_cen)
     print(f"Total circles detected: {total_circles}")
@@ -222,7 +188,7 @@ if hsv_values:
     if total_circles < 100:
         root = tk.Tk()
         root.withdraw()
-        messagebox.showwarning("Warning", "The number of detected circles is less than 100. \n Row height calculation may fail (rows may merge or split, or additional rows be inserted or the final rows might be comlpetely missing.\n Use at severe risk to your patience!).")
+        messagebox.showwarning("Warning", "The number of detected circles is less than 100. \n Row height calculation may fail (rows may merge or split, or additional rows be inserted or the final rows might be completely missing.\n Use at severe risk to your patience!).")
         root.destroy()
 
     # Sort circles based on y-coordinate
@@ -248,19 +214,16 @@ if hsv_values:
                 current_row = [(x, y)]
     rows.append(current_row)  # Add the last row
 
-   
     # rows are always taller than the columns, though it does depend on how tightly cropped the image width is
     # so the magic number is some factor how much taller it might be - but this values changes for very long
     # punchcards. This is a rough estimate for around the 60 row mark.
     row_height = col_bin_size * 1.087
     
     # Determine the expected number of rows based on the image height and average row height
-    #avg_row_height = np.mean([abs(rows[i][0][1] - rows[i-1][0][1]) for i in range(1, len(rows))])
     expected_rows = int(img_height / row_height)
     print(f"Expected rows: {expected_rows}")
-    #print(f"Test rows: {testrows}")
 
-     # Ensure all rows are included, even if they are blank
+    # Ensure all rows are included, even if they are blank
     all_rows = [[] for _ in range(expected_rows)]
     for row in rows:
         row_y = row[0][1]
@@ -268,7 +231,6 @@ if hsv_values:
         if row_index < expected_rows:
             all_rows[row_index].extend(row)  # Use extend to add circles to the row without removing existing ones
 
-  
     # row count is the expected number of rows - sadly this is never accurate!
     rc = expected_rows
 
@@ -293,18 +255,16 @@ if hsv_values:
         y = int(i * row_bin_size)
         cv2.line(frame_gau_blur, (0, y), (img_width, y), (0, 255, 0), 1)
 
-
     # Output the grid as simple text to console
     for row in grid:
         print(''.join(row))
     print(f"Rows: {rc}, Columns: {cc}")
     print("Check for additional rows (often blank), missing rows (especially at end), or merged rows.")
 
-     # Output the grid as simple text to a text file
+    # Output the grid as simple text to a text file
     output_lines = []
     for row in grid:
         output_lines.append(''.join(row))
-        # output_lines.append(f"Rows: {rc}, Columns: {cc}")
 
     # Save the output to a text file
     base_name = os.path.splitext(os.path.basename(image_path))[0]
@@ -313,10 +273,10 @@ if hsv_values:
         with open(output_file_path, 'w') as f:
             f.write('\n'.join(output_lines))
         print(f"Output saved to {output_file_path}")
+        print("Press any key to close the window.")
     except OSError as e:
         print(f"Error saving output to file: {e}")
 
-    #print(f"Output saved to {output_file_path}")  
     # Get screen dimensions
     temp_root = tk.Tk()
     temp_root.withdraw()
@@ -335,7 +295,8 @@ if hsv_values:
         
     # Display the images
     cv2.imshow('Circles', frame_gau_blur)
-    #cv2.imshow('Canny', canny_edge)
-    # Wait for a key press and close the windows
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+    if __name__ == "__main__":
+        main()
