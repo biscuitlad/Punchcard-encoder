@@ -9,13 +9,13 @@ This python script identifies hole punches for a Brother punchcard knitting mach
 
 The script assumes 24 stitch punchcards and is tuned for the PDF version of the Brother Pattern Book Vol 5 which you should be able to download for free somewhere (https://archive.org/details/brother-punchcard-pattern-book-volume-5), but it also works for phone camera images of 24 stitch punchcard patterns.
 
-Most of these patterns in this catalogue are blue and white. There are some at the back of the book that are black and white and these work less well. The script lets the user click on several 'holes' in the punchcard to get an average HSV value, the more you click the more accurate your results may be, but sometimes just clicking on one or two in the centre is sufficient. The script attempts to resize images to around 520 pixels wide if they are smaller than 500 or larger than 600 wide. After clicking 'Escape' you can check the circle detection (red circles) or just compare the text output in the terminal window.
+Most of these patterns in this catalogue are blue and white. There are some that are dark blue and at the back of the book that are black and white and these work less well. The script lets the user click on several 'holes' in the punchcard to get an average HSV value, the more you click the more accurate your results may be, but sometimes just clicking on one or two in the centre is sufficient. You can use your phone to create the image, but you will need to correct it for skew. After clicking a few holes, hit 'Escape' you can check the circle detection (red circles) or just compare the text output in the terminal window.
 
 The screenshot should only include the pattern, not the whole card and not the rows of holes down either side. You should try and get as tight a border as possible.
 
-The script detects the solid circles and tries to create a grid based on an average of their centres across a row and down a column. Columns default to 24 stitches and are always included. But rows only get detected *if* they have a circle in them, therefore *blank rows get skipped by the script*. 
+The script detects the solid circles and tries to create a grid. Columns default to 24 stitches and are always included. However, row height is not constant, due to skew and other factors. So for very long punchards (like some lace patterns), the row height will start to drift and rows may merge, split or even get skipped entirely near the end. This is worse the more blank rows there are. 
 
-**You must carefully check the text output against the pattern, and insert the blank rows as needed and any missing holes!**
+**You must carefully check the text output against the pattern, and delete (or insert) the blank rows as needed and any missing holes!**
 
 When uploading the text file to Brenda Bell's program, make sure you have the 24 stitch, 4.5mm gauge Brother machine selected or it will throw an error.
 
