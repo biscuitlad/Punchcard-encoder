@@ -63,3 +63,6 @@ Some example screenshots of patterns and the outputs:
 The following screenshots show patterns with blank rows that generate errors in the output. These need correcting by hand in the text file.
 
 ![Screenshot 2025-02-21 111203](https://github.com/user-attachments/assets/2486d259-9f96-49d5-abaa-e73e4502d009)  
+
+
+![Screenshot 2025-02-21 112539](https://github.com/user-attachments/assets/9044a1fb-141f-43f3-928b-44ccdf1c0bf1)
