@@ -41,6 +41,7 @@
 import cv2
 import numpy as np
 import os
+import math
 import tkinter as tk
 from tkinter import messagebox, filedialog, ttk
 
@@ -53,13 +54,18 @@ def show_instructions():
         root.destroy()
 
     instructions = (
-        "Usage:\n"
-        "1. Screenshot the pattern and save it.\n"
-        "2. Run this script.\n"
-        "3. Click on several of the circles in the punchcard image to get their values.\n"
-        "4. Press 'Esc' to exit the image window.\n"
-        "5. The output will be displayed in the terminal and saved to a text file.\n"
-        "6. Check the circle detection, and either click more circles or adjust the parameters to get better accuracy. Any key will unload that window.\n"
+        "Usage:\n\n"
+        "1. Screenshot the punchcard pattern, correct for skew and crop to just the pattern as needed, and save it.\n"
+        "2. Run this script, select your screenshot and it will load the image.\n"
+        "3. Click on a few of the holes in the punchcard image to get their colour values.\n"
+        "4. Press 'Esc' to exit the image window and start the hole detection.\n"
+        "5. The conversion to text format will be displayed in the terminal and saved to a text file in the same \n"
+        "    directory as your screenshot.\n"
+        "6. Check the hole detection window for errors. Clicking more holes can give you better accuracy.\n"
+        "7. Any key will unload the hole detection window and you can't re-run the script until it is closed.\n"
+        "7. The blank row detection is not perfect, so double check for additional rows, missing rows, or merged rows.\n"
+        "8. Note that long punchcards, or punchcards with many blank rows, generate more errors. In fact, long \n"
+        "    punchcards (e.g. lace) with fewer than 100 holes are better done by hand.\n"
     )
     root = tk.Tk()
     root.title("Instructions for knitting punchcard decoder!")
@@ -73,7 +79,15 @@ def show_instructions():
 
     button = ttk.Button(root, text="OK", command=on_ok)
     button.pack(pady=5)
-
+    
+    # Center the window on the screen
+    root.update_idletasks()
+    width = root.winfo_width()
+    height = root.winfo_height()
+    x = (root.winfo_screenwidth() // 2) - (width // 2)
+    y = (root.winfo_screenheight() // 2) - (height // 2)
+    root.geometry(f'{width}x{height}+{x}+{y}')
+    
     root.mainloop()
 
 # Function to select an image file
@@ -109,7 +123,7 @@ maxRadius=4
 frame = cv2.imread(image_path)
 
 if frame is None:
-    print("Error: Could not read image. Probably you got the wrong path.")
+    print("Error: Could not read image. Was it an image file?")
 else:
      # Get the resolution of the image
     img_height, img_width = frame.shape[:2]
@@ -198,15 +212,31 @@ if hsv_values:
             # Draw the detected circle and its center
             cv2.circle(frame_gau_blur, (i[0], i[1]), 7, (0, 0, 255), 2)
             cir_cen.append((i[0], i[1]))
-            
     
+    
+    # Calculate the total number of circles detected
+    total_circles = len(cir_cen)
+    print(f"Total circles detected: {total_circles}")
+
+    # Warn the user if the number of detected circles is less than 100
+    if total_circles < 100:
+        root = tk.Tk()
+        root.withdraw()
+        messagebox.showwarning("Warning", "The number of detected circles is less than 100. \n Row height calculation may fail (rows may merge or split, or additional rows be inserted or the final rows might be comlpetely missing.\n Use at severe risk to your patience!).")
+        root.destroy()
+
     # Sort circles based on y-coordinate
     cir_cen.sort(key=lambda c: c[1])
 
+    # Determine the bin size for columns
+    cc = 24
+    col_bin_size = img_width / cc
+
     # Group circles into rows based on y-coordinate threshold
-    y_threshold = 13  # Adjust this value based on your image
+    y_threshold = col_bin_size / 5 # Adjust this value based on your image
     rows = []
     current_row = []
+
     for i, (x, y) in enumerate(cir_cen):
         if i == 0:
             current_row.append((x, y))
@@ -218,21 +248,38 @@ if hsv_values:
                 current_row = [(x, y)]
     rows.append(current_row)  # Add the last row
 
- 
-# # Determine the bin size for columns
-    cc = 24
-    rc = len(rows)
+   
+    # rows are always taller than the columns, though it does depend on how tightly cropped the image width is
+    # so the magic number is some factor how much taller it might be - but this values changes for very long
+    # punchcards. This is a rough estimate for around the 60 row mark.
+    row_height = col_bin_size * 1.087
+    
+    # Determine the expected number of rows based on the image height and average row height
+    #avg_row_height = np.mean([abs(rows[i][0][1] - rows[i-1][0][1]) for i in range(1, len(rows))])
+    expected_rows = int(img_height / row_height)
+    print(f"Expected rows: {expected_rows}")
+    #print(f"Test rows: {testrows}")
+
+     # Ensure all rows are included, even if they are blank
+    all_rows = [[] for _ in range(expected_rows)]
+    for row in rows:
+        row_y = row[0][1]
+        row_index = int(row_y // row_height)
+        if row_index < expected_rows:
+            all_rows[row_index].extend(row)  # Use extend to add circles to the row without removing existing ones
+
+  
+    # row count is the expected number of rows - sadly this is never accurate!
+    rc = expected_rows
 
     # Determine the bin size for columns and rows
-    img_height, img_width = frame.shape[:2]
-    col_bin_size = img_width / cc
-    row_bin_size = img_height / rc
-
+    row_bin_size = row_height  
+   
     # Create a 2D array to represent the grid
     grid = [['-' for _ in range(cc)] for _ in range(rc)]
 
     # Populate the grid based on the grouped rows and columns
-    for row_idx, row in enumerate(rows):
+    for row_idx, row in enumerate(all_rows):
         for x, y in row:
             col = int(x // col_bin_size)
             if col < cc:
@@ -251,6 +298,7 @@ if hsv_values:
     for row in grid:
         print(''.join(row))
     print(f"Rows: {rc}, Columns: {cc}")
+    print("Check for additional rows (often blank), missing rows (especially at end), or merged rows.")
 
      # Output the grid as simple text to a text file
     output_lines = []
@@ -269,7 +317,22 @@ if hsv_values:
         print(f"Error saving output to file: {e}")
 
     #print(f"Output saved to {output_file_path}")  
-    
+    # Get screen dimensions
+    temp_root = tk.Tk()
+    temp_root.withdraw()
+    screen_width = temp_root.winfo_screenwidth()
+    screen_height = temp_root.winfo_screenheight() - 150 # Subtract 150 pixels for the taskbar
+    temp_root.destroy()
+
+    # Resize the image if it is larger than the screen dimensions
+    if img_height > screen_height:
+        scale_width = screen_width / img_width
+        scale_height = screen_height / img_height
+        scale = min(scale_width, scale_height)
+        new_width = int(img_width * scale)
+        new_height = int(img_height * scale)
+        frame_gau_blur = cv2.resize(frame_gau_blur, (new_width, new_height))
+        
     # Display the images
     cv2.imshow('Circles', frame_gau_blur)
     #cv2.imshow('Canny', canny_edge)
