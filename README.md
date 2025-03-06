@@ -6,7 +6,10 @@
 This is a unchcard knitting pattern encoder for Brenda Bell's Punchcard Generator: https://brendaabell.com/knittingtools/pcgenerator/ (a program to create an SVG file that can be cut out by die cutting machine like a Cricut).
 
 TLDR: You can download the exe file here (it doesn't install anything, double click to run it): https://drive.google.com/file/d/1obdsK7kDBt5l7_DXGD6Shqym16G3mHbd/view?usp=drive_link
+
+There is a SVG folder that contains SVG files for Cricut or similar machines from Brother Punchcard patterns Vol 5 for 24 stitch 4.5mm gauge machines. Currently this contains the first 50 patterns. I will try to increase them over time.
 --
+If need a pattern deep in the book, you'll need to the run script yourself or the exe above. 
 
 This python script identifies hole punches for a Brother punchcard knitting machine from a screenshot of the punchcard patterns that were commonly created in the 1980s in Brother knitting pattern catalogues.
 
