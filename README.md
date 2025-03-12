@@ -3,7 +3,7 @@
 
 # Punchcard-encoder  
 
-This is a unchcard knitting pattern encoder for Brenda Bell's Punchcard Generator: https://brendaabell.com/knittingtools/pcgenerator/ (a program to create an SVG file that can be cut out by die cutting machine like a Cricut).
+This is a punchcard knitting pattern encoder for Brenda Bell's Punchcard Generator: https://brendaabell.com/knittingtools/pcgenerator/ (a program to create an SVG file that can be cut out by die cutting machine like a Cricut).
 
 TLDR: You can download the exe file here (it doesn't install anything, double click to run it): https://drive.google.com/file/d/1obdsK7kDBt5l7_DXGD6Shqym16G3mHbd/view?usp=drive_link
 
