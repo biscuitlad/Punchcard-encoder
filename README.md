@@ -7,9 +7,9 @@ This is a unchcard knitting pattern encoder for Brenda Bell's Punchcard Generato
 
 TLDR: You can download the exe file here (it doesn't install anything, double click to run it): https://drive.google.com/file/d/1obdsK7kDBt5l7_DXGD6Shqym16G3mHbd/view?usp=drive_link
 
-There is a SVG folder that contains SVG files for Cricut or similar machines from Brother Punchcard patterns Vol 5 for 24 stitch 4.5mm gauge machines. There is also a text folder of the patterns starting at pattern 50 from the book.
+There is a SVG folder that contains SVG files for Cricut Maker generated from Brother Punchcard patterns Vol 5 for Brother 24 stitch 4.5mm gauge knitting machines. There is also a text folder of the patterns starting at pattern 50 from the book.
 --
-If need a pattern deep in the book, you'll need to the run script yourself or the exe above. 
+If need a pattern deep in the book, you'll need to the run script yourself or the exe above! 
 
 This python script identifies hole punches for a Brother punchcard knitting machine from a screenshot of the punchcard patterns that were commonly created in the 1980s in Brother knitting pattern catalogues.
 
