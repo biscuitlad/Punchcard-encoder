@@ -7,7 +7,7 @@ This is a punchcard knitting pattern encoder for Brenda Bell's Punchcard Generat
 
 TLDR: You can download the exe file here (it doesn't install anything, double click to run it): https://drive.google.com/file/d/1obdsK7kDBt5l7_DXGD6Shqym16G3mHbd/view?usp=drive_link
 
-There is a SVG folder that contains SVG files for Cricut Maker generated from Brother Punchcard patterns Vol 5 for Brother 24 stitch 4.5mm gauge knitting machines. There is also a text folder of the patterns starting at pattern 50 from the book.
+There is a SVG folder that contains SVG files for Cricut Maker generated from Brother Punchcard patterns Vol 5 for Brother 24 stitch 4.5mm gauge knitting machines. There is also a text folder of the patterns starting at pattern 50 from the book and going to pattern 100.
 --
 If need a pattern deep in the book, you'll need to the run script yourself or the exe above! 
 
